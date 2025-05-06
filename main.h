@@ -7,6 +7,7 @@
    #include <stdlib.h>
    #include <time.h>
    #define SIZE 50
+
 typedef struct
  {
     int keyid;
@@ -16,6 +17,16 @@ typedef struct
     int weight;
     char phrase[255];
  } Animal;
+
+
+typedef enum
+{
+    INDEFINI = 0,
+    HAMSTERE = 1,
+    AUTRUCHE = 2,
+    CHAT = 3,
+    CHIEN = 4
+} Espece;
 
  Animal animals[SIZE];
 
