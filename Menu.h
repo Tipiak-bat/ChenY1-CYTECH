@@ -1,3 +1,3 @@
 #include<stdio.h>
 
-void afficheMenu();
+void affiche_Menu();
