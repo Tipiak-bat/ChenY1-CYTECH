@@ -1,0 +1,18 @@
+#include <menu.h>
+
+
+void affiche_menu () {
+  printf （"\n====Bienvenue dans Le menu de ChenY1 le Refuge====\n"）；
+
+  printf("1: Vous Recherchez un animal\n");
+
+  printf("2: Vous voulez ajouter un animal\n");
+
+  printf("3: Vous voulez supprimer un animal\n");
+
+  printf("4: Inventaire par espèce\n"); // ler variante inventaire nombre decroissant
+
+  printf("5: Faire le nettoyage hebdomaire\n"); //2eme variante DAY CLEAN
+
+  printf("6: Quitter le menu\n");
+}
