@@ -23,11 +23,10 @@ int printTab(int size, Animal * animals){
 int emptyCages(Animal * animals, int size) {
     int nmb = 0;
     for(int i = 0; i < size; i++){
-        if(animals.keyid[i] < 0 ) {
+        if(animals[i].keyid < 0 ) {
             nmb++;
         }
     }
-    return nmb;
 }
 int addAnimal(Animal *animals, int size) {
     if (animals == NULL || size <= 0) {
@@ -35,9 +34,19 @@ int addAnimal(Animal *animals, int size) {
         return 1;
     }
 
+    int f_empty = 0;
+    while(f_empty < size && animals[f_empty].keyid >= 0) {
+        f_empty++;
+    }
 
     printf("Entrez les informations de l'animal (keyid, nom, espece, b_year, weight, phrase) :\n");
-    scanf("%d %s %d %d %d %
+    scanf("%d %s %d %d %d %s\n",
+                      animals[f_empty].keyid,
+                      animals[f_empty].nom,
+                      animals[f_empty].espece,
+                      animals[f_empty].b_year,
+                      animals[f_empty].weight,
+                      animals[f_empty].phrase);
 
     return 0;
 }
