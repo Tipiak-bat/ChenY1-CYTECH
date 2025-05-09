@@ -1,22 +1,40 @@
 #include "menu.h"
 
-void Rechercher_animal(){
-printf ("
+int Rechercher_animal(){
+printf ("");
+return 0;
 }
-void Ajouter_animal(){
-
-}
-void Supprimer_animal(){
-
-}
-void Inventaire_par_espece(){
+int Ajouter_animal(){
+  printf (format"
   
-}
-void Nettoyage_hebdomadaire(){
+  printf ("nom de l'animal que vous voulez ajouter");
 
+  printf("Quel est l'espèce de l'animal : Chien , chat, Hamster, autruche ");
+
+  printf("l'année de naissance de l'animal");
+
+  printf("le poids de l'animal");
+
+  
+  
+  return 0;
+}
+int Supprimer_animal(){
+
+  return 0;
+}
+int Inventaire_par_espece(){
+
+  return 0;
+}
+int Nettoyage_hebdomadaire(){
+
+  return 0;
 }
 
-void Quitter_le_Menu(){
+int Quitter_le_Menu(){
+  
+  return 0;
 
 }
 
@@ -62,7 +80,7 @@ switch (choix) {
                break;
 default:
         printf("Erreur: veuiller saisir un numéro entre 1 et 6");
-while(choix > 0 || choix > 6);                       // ne pas quitter tant que l'utilisateur na pas choisie u nemero entre un et 6
-
+while(choix > 0 || choix > 6);                       // ne pas quitter tant que l'utilisateur n'a pas choisie un numéro entre 1 et 6
+}
 return 0; 
 }
