@@ -6,7 +6,19 @@ printf ("
 void Ajouter_animal(){
 
 }
-void Supprimer
+void Supprimer_animal(){
+
+}
+void Inventaire_par_espece(){
+  
+}
+void Nettoyage_hebdomadaire(){
+
+}
+
+void Quitter_le_Menu(){
+
+}
 
 
 do {                           // faire boucle do....while pour que le menu s'affiche plusieurs fois
@@ -18,6 +30,7 @@ void affiche_menu () {
   printf("4: Inventaire par espèce\n"); // ler variante inventaire nombre decroissant
   printf("5: Faire le nettoyage hebdomaire\n"); //2eme variante DAY CLEAN
   printf("6: Quitter le menu\n");
+  printf("7: Crédit\n");
 }
 
 // dans le int main 
