@@ -37,7 +37,7 @@ int Rechercher_animal(){
 
     // recherche en cours
     // Amina les valeurs par défaut sont "" pour le nom, -1 pour l'espèce, 0 pour la catégorie d'age
-    // recherche_animaltab();
+    // recherche_animaltab(r_name, r_espece, categorie_age);
     return 0;
   }
 
