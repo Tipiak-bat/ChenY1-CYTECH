@@ -1,9 +1,32 @@
 #include "menu.h"
 
 int Rechercher_animal(){
-printf ("");
-return 0;
-}
+    char r_name[25]; // En dynamique pour dimanche si possible
+    int r_espece = -1;
+    int categorie_age;
+
+    printf("\n=====Recherche=====\n");
+    printf("Laissez votre saisie vide si vous souhaitez ne pas rechercher en fonction de ce critères\n");
+    printf("Saisir le nom de l'animal :\n");
+    scanf("%s", r_name);
+    printf("Liste des IDs :\n INDEFINI = 0\n HAMSTERE = 1\nAUTRUCHE = 2\nCHAT = 3\nCHIEN = 4\n");
+    printf("Saisir l'ID de l'espèce :\n");
+    scanf("%d", &r_espece);
+    if(r_espece>4 || r_espece < -1) {
+        printf("[ERROR] Saisie invalide, retour au menu");
+        return 1;
+    }
+    printf("Rechercher un animal (1 - Jeune, 2 - Adulte, 3 - Senior) : \n");
+    scanf("%d", &categorie_age);
+    if (categorie_age < 0 || categorie_age > 3) {
+        printf("[ERROR] Saisie invalide, retour au menu\n");
+        return 1;
+    }
+    // recherche en cours
+    // recherche_animal(r_name, r_espece, categorie_age);
+    return 0;
+  }
+
 int Ajouter_animal(){
   printf (format"
   
