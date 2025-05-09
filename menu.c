@@ -42,7 +42,7 @@ int Rechercher_animal(){
   }
 
 int Ajouter_animal(){
-  printf (format"
+  printf ("\n=====Ajouter=====\ 
   
   printf ("nom de l'animal que vous voulez ajouter");
 
