@@ -42,20 +42,65 @@ int Rechercher_animal(){
   }
 
 int Ajouter_animal(){
-  printf ("\n=====Ajouter=====\ 
-  
-  printf ("nom de l'animal que vous voulez ajouter");
+   char nom[30];
+    int espece = -1;
+    int age = -2;
+    int retour;
 
-  printf("Quel est l'espèce de l'animal : Chien , chat, Hamster, autruche ");
+    printf("===== AJOUTER UN ANIMAL =====\n");
 
-  printf("l'année de naissance de l'animal");
+    // saisir le nom de l'animal
+    printf("Entrez le nom de l'animal  : ");
+    scanf("%s", nom);  // Pas de vérification ici car scanf bloque déjà si c’est pas du texte
 
-  printf("le poids de l'animal");
+    // Saisie de l'espèce AVEC vérification
+    do { 
+        printf("\nEspèces disponibles :\n");
+        printf("0 - Hamster\n");
+        printf("1 - Autruche\n");
+        printf("2 - Chat\n");
+        printf("3 - Chien\n");
+        printf("Entrez le numéro de l'espèce (0 à 3) : ");
+        retour = scanf("%d", &espece);
 
-  
-  
-  return 0;
+        // getchar pour lire une seule lettre a la fois 
+        while (getchar() != '\n'); // enlève donc ce que l'utilisateur a mis inutilement 
+
+        if (retour != 1 || espece < 0 || espece > 3) {
+            printf("[ERREUR] Entrée invalide. Veuillez recommencer.\n");
+            espece = -1; // On force à recommencer
+        }
+    } while (espece == -1);
+
+    // Saisie de l'âge AVEC vérification
+    do {
+        printf("Entrez l'âge de l'animal (entre 0 et 30) : ");
+        retour = scanf("%d", &age);
+
+        // je vide la memoire ou les lettre inutile vont 
+        while (getchar() != '\n');
+
+        if (retour != 1 || age < 0 || age > 30) {
+            printf("[ERREUR] Âge invalide. Veuillez recommencer.\n");
+            age = -1;
+        }
+    } while (age == -2);
+
+    // Affichage final
+    printf("\nAnimal ajouté avec succès !\n");
+    printf("Nom : %s\n", nom);
+    printf("Espèce : ");
+    switch (espece) {
+        case 0: printf("Hamster\n"); break;
+        case 1: printf("Autruche\n"); break;
+        case 2: printf("Chat\n"); break;
+        case 3: printf("Chien\n"); break;
+    }
+    printf("Âge : %d ans\n", age);
+
+    return 0;
 }
+
 int Supprimer_animal(){
 
   return 0;
