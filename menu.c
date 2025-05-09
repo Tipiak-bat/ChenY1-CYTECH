@@ -91,10 +91,18 @@ int Ajouter_animal(){
     printf("Nom : %s\n", nom);
     printf("Espèce : ");
     switch (espece) {
-        case 0: printf("Hamster\n"); break;
-        case 1: printf("Autruche\n"); break;
-        case 2: printf("Chat\n"); break;
-        case 3: printf("Chien\n"); break;
+        case 0: 
+            printf("Hamster\n");
+            break;
+        case 1: 
+            printf("Autruche\n");
+            break;
+        case 2:
+            printf("Chat\n");
+            break;
+        case 3: 
+            printf("Chien\n");
+            break;
     }
     printf("Âge : %d ans\n", age);
 
