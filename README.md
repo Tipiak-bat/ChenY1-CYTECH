@@ -23,7 +23,7 @@ Bienvenue dans **ChenY1**, un projet de gestion d'un refuge pour animaux. Ce pro
 
 ### Prérequis
 - Un compilateur C (comme `gcc`).
-- Un environnement de développement compatible (par exemple, CLion).
+- L'Utilitaire `make`
 
 ### Étapes
 1. Clonez le dépôt :
