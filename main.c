@@ -21,7 +21,7 @@ int main() {
                 Rechercher_animal(); // Fonction de recherche
             break;
             case 2:
-                if (addAnimal(animaux, 50) == 0) {
+                if (addAnimal(animaux, SIZE) == 0) {
                     nb_animaux++;
                     printf("Animal ajouté avec succès.\n");
                 } else {
@@ -29,25 +29,27 @@ int main() {
                 }
             break;
             case 3:
-                nb_animaux = Supprimer_animal(animaux, nb_animaux);
+                nb_animaux = Supprimer_animal(animaux, SIZE);
             printf("Animal supprimé avec succès.\n");
             break;
             case 4:
-                Inventaire_par_espece(animaux, nb_animaux);
+                Inventaire_par_espece(animaux, SIZE);
             break;
             case 5:
-                Nettoyage_hebdomadaire(animaux, nb_animaux);
+                Nettoyage_hebdomadaire(animaux, SIZE);
             break;
             case 6:
+                menu_sauv_rest(animaux, SIZE); // Menu de sauvegarde et restauration
+            case 7:
                 if (Quitter_le_Menu()) {
                     return 0; // Quitte le programme
                 }
             break;
-            case 7:
+            case 8:
                 printf("Crédits : Projet réalisé par l'équipe CYTech 2025.\n");
             break;
             default:
-                printf("Erreur : veuillez saisir un numéro entre 1 et 7.\n");
+                printf("Erreur : veuillez saisir un numéro entre 1 et 8.\n");
         }
     } while (choix >= 1 && choix <= 7);
 
