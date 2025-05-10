@@ -61,7 +61,7 @@ int restauration(Animal *animals, int size) {
 
      printf("[LOGS] Restauration en cours...\n");
      int i = 0;
-     while (i < size && fscanf(fichier, "%d %s %d %d %d %s\n",
+     while (i < size && fscanf(fichier, "%d %s %d %d %f %s\n",
                                &animals[i].keyid,
                                animals[i].nom,
                                &animals[i].espece,
