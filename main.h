@@ -6,7 +6,7 @@
    #include <string.h>
    #include <stdlib.h>
    #include <time.h>
-   #define SIZE 50
+   #define SIZE 51
 
 typedef struct Animal {
     int keyid;
