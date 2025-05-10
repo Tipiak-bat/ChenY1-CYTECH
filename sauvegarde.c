@@ -6,7 +6,7 @@ int sauvegarde(Animal *animals, int size) {
           return 1;
      }
 
-     FILE *fichier = fopen("animal.txt", "w");
+     FILE *fichier = fopen("animaux/animal.txt", "w");
      if (fichier == NULL) {
           printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
@@ -53,7 +53,7 @@ int restauration(Animal *animals, int size) {
           return 1;
      }
 
-     FILE *fichier = fopen("animal.txt", "r");
+     FILE *fichier = fopen("animaux/animal.txt", "r");
      if (fichier == NULL) {
           printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
