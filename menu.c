@@ -148,19 +148,62 @@ int Supprimer_animal(Animal animaux[], int nb_animaux) {
   return 0;
 }
 
-int Inventaire_par_espece(){
+    // Fonction qui retourne le nombre d'animaux par espèce VARIANTE
+int Inventaire_par_espece(Animal animaux[], int nb_animaux) {
+    if (nb_animaux == 0) {
+        printf("Aucun animal à afficher.\n");
+        return 0;
+    }
+
+    int chiens = 0, chats = 0, autruches = 0, hamsters = 0;
+
+    for (int i = 0; i < nb_animaux; i++) {
+        switch (animaux[i].species) {
+            case 1: 
+                chiens++; 
+                break;
+            case 2:
+                chats++;
+                break;
+            case 3: 
+                autruches++;
+                break;
+            case 4:
+                hamsters++;
+                break;
+        }
+    }
+
+    // Retourne le nombre total d'animaux dans l'inventaire
+    printf("Inventaire :\n");
+    printf("Chiens : %d\n", chiens);
+    printf("Chats : %d\n", chats);
+    printf("Autruches : %d\n", autruches);
+    printf("Hamsters : %d\n", hamsters);
+    
+    return 0;  // Indicateur de réussite ou d'achèvement de la fonction
+}
+
 
   return 0;
 }
-int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) {
+int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) { // VARIANTE 
     int temps_total = 0;
 
     for (int i = 0; i < nb_animaux; i++) {
         switch (animaux[i].species) {
-            case 1: temps_total += (5 * 7) + 20; break;  // Chien
-            case 2: temps_total += (10 * 7) + 20; break; // Chat
-            case 3: temps_total += (20 * 7) + 45; break; // Autruche
-            case 4: temps_total += (10 * 7) + 20; break; // Hamster
+            case 1: 
+                temps_total += (5 * 7) + 20;
+                break;  // Chien
+            case 2: 
+                temps_total += (10 * 7) + 20; 
+                break; // Chat
+            case 3:
+                temps_total += (20 * 7) + 45;
+                break; // Autruche
+            case 4:
+                temps_total += (10 * 7) + 20; 
+                break; // Hamster
         }
     }
 
