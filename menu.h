@@ -19,10 +19,10 @@ typedef struct Animal {
 
 typedef enum
 {
-    HAMSTERE = 1,
-    AUTRUCHE = 2,
-    CHAT = 3,
-    CHIEN = 4
+    CHIEN = 1,
+    CHAT = 2,
+    AUTRUCHE = 3,
+    HAMSTERE = 4
 } Espece;
 
 
