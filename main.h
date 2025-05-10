@@ -29,7 +29,7 @@ typedef enum
 
 void affiche_menu();
 int Rechercher_animal();
-int addAnimal(Animal * animaux, int size);
+int Ajouter_Animal(Animal * animaux, int size);
 int Supprimer_animal(Animal * animaux, int nb_animaux);
 int Inventaire_par_espece(Animal * animaux, int nb_animaux);
 int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux);
