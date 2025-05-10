@@ -18,6 +18,15 @@ typedef struct
     char phrase[255];
  } Animal;
 
+//c'est pour aryem quand j'ai fait la fonction ajouter animal je savais pas ou mettre desoler 
+// typedef struct {
+//    int identifiant;
+  //  char nom[50];
+//    int espece;
+  //  int annee_naissance;
+//    float poids;
+  //  char categorie_age[10];
+//} Animal;
 
 typedef enum
 {
