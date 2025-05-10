@@ -28,11 +28,11 @@ typedef enum Espece{
 
 void affiche_menu();
 int Rechercher_animal();
-int addAnimal(Animal animaux[], int size);
-int Supprimer_animal(Animal animaux[], int nb_animaux);
-int Inventaire_par_espece(Animal animaux[], int nb_animaux);
-int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux);
-int menu_sauv_rest(Animal *animaux, int nb_animaux);
+int addAnimal(Animal * animaux, int size);
+int Supprimer_animal(Animal * animaux, int nb_animaux);
+int Inventaire_par_espece(Animal * animaux, int nb_animaux);
+int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux);
+int menu_sauv_rest(Animal * animaux, int nb_animaux);
 int Quitter_le_Menu();
 
 
