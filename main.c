@@ -7,7 +7,7 @@ int main() {
     int choix;
 
     // Initialisation des cages vides
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 1; i < SIZE; i++) {
         animaux[i].keyid = -i; // Indique une cage vide
     }
 
@@ -42,17 +42,20 @@ int main() {
                 menu_sauv_rest(animaux, SIZE); // Menu de sauvegarde et restauration
             break;
             case 7:
+                Imprimer_animaux(animaux, SIZE);
+            break;
+            case 8:
                 if (Quitter_le_Menu()) {
                     return 0; // Quitte le programme
                 }
             break;
-            case 8:
+            case 9:
                 printf("Crédits : Projet réalisé par l'équipe CYTech 2025.\n");
             break;
             default:
                 printf("Erreur : veuillez saisir un numéro entre 1 et 8.\n");
         }
-    } while (choix >= 1 && choix <= 8);
+    } while (choix >= 1 && choix <= 9);
 
     return 0;
 }
