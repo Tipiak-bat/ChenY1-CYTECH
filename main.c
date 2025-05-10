@@ -45,7 +45,7 @@ int main() {
                 Imprimer_animaux(animaux, SIZE);
             break;
             case 8:
-                if (Quitter_le_Menu()) {
+                if (Quitter_le_Menu(animaux, SIZE)) {
                     return 0; // Quitte le programme
                 }
             break;
