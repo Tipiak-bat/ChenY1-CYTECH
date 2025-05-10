@@ -39,106 +39,82 @@ int Rechercher_animal(){
     // Amina les valeurs par défaut sont "" pour le nom, -1 pour l'espèce, 0 pour la catégorie d'age
     // recherche_animaltab(r_name, r_espece, categorie_age);
     return 0;
-  }
+  } 
 
-int Ajouter_animal(){
- 
+Animal ajouter_Animal() {
+    Animal a;
+    int valide = 0;
 
-int compteur_id = 0;  // Variable pour générer un ID unique pour chaque animal
+    // Saisie de l'identifiant
+    printf("Veuillez saisir l'identifiant de l'animal :\n");
+    scanf("%d", &a.identifiant);
 
-
-    char nom[30];
-    int espece = -1;
-    int age = -2;
-    float poids = -1;
-    int retour;
-
-    printf("===== AJOUTER UN ANIMAL =====\n");
-
-    // Saisie du nom de l'animal
-    printf("Entrez le nom de l'animal : ");
-    scanf("%s", nom);  // On ne vérifie pas si c'est bien du texte, car scanf bloque sur des chaînes
-
-    // Saisie de l'espèce avec vérification
+    // Saisie du nom
     do {
-        printf("\nEspèces disponibles :\n");
-        printf("0 - Hamster\n");
-        printf("1 - Autruche\n");
-        printf("2 - Chat\n");
-        printf("3 - Chien\n");
-        printf("Entrez le numéro de l'espèce (0 à 3) : ");
-        retour = scanf("%d", &espece);
-
-        // Je vide la mémoire ou les lettre inutile vont 
-        while (getchar() != '\n');
-
-        if (retour != 1 || espece < 0 || espece > 3) {
-            printf("[ERREUR] Entrée invalide. Veuillez recommencer.\n");
-            espece = -1;  // Force à recommencer
+        valide = 1;
+        printf("Veuillez saisir le nom de l'animal (sans espaces) :\n");
+        scanf("%s", a.nom);
+        for (int i = 0; a.nom[i] != '\0'; i++) {
+            if (a.nom[i] == ' ') {
+                printf("Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
+                valide = 0;
+                break;
+            }
         }
-    } while (espece == -1);
+    } while (valide != 1);
 
-    // Saisie de l'âge avec vérification
+    // Saisie de l'espèce
     do {
-        printf("Entrez l'âge de l'animal (entre 0 et 30) : ");
-        retour = scanf("%d", &age);
-
-        // Getchar pour lire une seule lettre à à fois
-        while (getchar() != '\n');
-
-        if (retour != 1 || age < 0 || age > 30) {
-            printf("[ERREUR] Âge invalide. Veuillez recommencer.\n");
-            age = -2;
+        printf("Veuillez choisir l'espèce de l'animal :\n");
+        printf("1 - Chien\n2 - Chat\n3 - Autruche\n4 - Hamster\n");
+        scanf("%d", &a.espece);
+        if (a.espece < 1 || a.espece > 4) {
+            printf("Espèce invalide. Veuillez réessayer.\n");
         }
-    } while (age == -2);
+    } while (a.espece < 1 || a.espece > 4);
 
-    // Saisie du poids avec vérification
+    // Saisie du poids
     do {
-        printf("Entrez le poids de l'animal (en kg) : ");
-        retour = scanf("%f", &poids);
-
-      
-        while (getchar() != '\n');
-
-        if (retour != 1 || poids <= 0) {
-            printf("[ERREUR] Poids invalide. Veuillez recommencer.\n");
-            poids = -1;
+        printf("Veuillez saisir le poids de l'animal (en kg, positif) :\n");
+        scanf("%f", &a.poids);
+        if (a.poids <= 0) {
+            printf("Le poids doit être un nombre positif. Veuillez réessayer.\n");
         }
-    } while (poids == -1);
+    } while (a.poids <= 0);
 
-    // Générer un ID unique pour l'animal
-    int id = compteur_id;  // L'ID unique est basé sur le compteur
-    compteur_id++;
+    // Saisie de l'année de naissance
+    do {
+        printf("Veuillez saisir l'année de naissance de l'animal :\n");
+        scanf("%d", &a.annee_naissance);
+        if (a.annee_naissance < 1980 || a.annee_naissance > 2025) {
+            printf("Année invalide. Veuillez réessayer.\n");
+        }
+    } while (a.annee_naissance < 1980 || a.annee_naissance > 2025);
 
-    // Affichage de l'animal ajouté avec ses détails
-    printf("\nAnimal ajouté avec succès !\n");
-    printf("ID : %d\n", id);
-    printf("Nom : %s\n", nom);
-
-    // Affichage de l'espèce
-    printf("Espèce : ");
-    switch (espece) {
-        case 0: printf("Hamster\n"); break;
-        case 1: printf("Autruche\n"); break;
-        case 2: printf("Chat\n"); break;
-        case 3: printf("Chien\n"); break;
-    }
-
-    // Affichage de l'âge et de la catégorie (junior ou senior)
-    printf("Âge : %d ans\n", age);
-    if (age < 2) {
-        printf("Catégorie : Junior\n");
+    // Déterminer la catégorie d'âge
+    int annee_actuelle = 2023;
+    int age = annee_actuelle - a.annee_naissance;
+    if (age <= 2) {
+        snprintf(a.categorie_age, sizeof(a.categorie_age), "Junior");
     } else if (age > 10) {
-        printf("Catégorie : Senior\n");
+        snprintf(a.categorie_age, sizeof(a.categorie_age), "Senior");
     } else {
-        printf("Catégorie : Adulte\n");
-    }
+        snprintf(a.categorie_age, sizeof(a.categorie_age), "Adulte");
+    } // snprintf c comme un printf pour une variable mais avec une limite de mots pour eviter les bug 
 
-    // Affichage du poids
-    printf("Poids : %.2f kg\n", poids);
+    // Affichage final
+    printf("\nAnimal ajouté :\n");
+    printf("Identifiant : %d\n", a.identifiant);
+    printf("Nom : %s\n", a.nom);
+    printf("Espèce : %d\n", a.espece);
+    printf("Année de naissance : %d\n", a.annee_naissance);
+    printf("Poids : %.2f kg\n", a.poids);
+    printf("Catégorie d'âge : %s\n", a.categorie_age);
 
-    return 0;
+    return a;
 }
+
+
 
 
 int Supprimer_animal(){
