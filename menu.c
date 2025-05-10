@@ -1,4 +1,8 @@
 #include "menu.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 
 int Rechercher_animal() {
     // on met des valeurs par défaut
@@ -133,9 +137,10 @@ int Supprimer_animal(Animal * animaux, int nb_animaux) {
         while (getchar() != '\n'); // Nettoyage du buffer
         return nb_animaux;
     }
-   
+
     int index = -1;
     for (int i = 1; i < nb_animaux; i++) {
+
         if (animaux[i].keyid == id) {
             index = i;
             break;
@@ -154,6 +159,7 @@ int Supprimer_animal(Animal * animaux, int nb_animaux) {
     printf("Animal adoptée supprimé de la base de données avec succès.\n");
     return nb_animaux - 1;
 }
+
 
 int Inventaire_par_espece(Animal * animaux, int nb_animaux) {
     if (nb_animaux == 0) {

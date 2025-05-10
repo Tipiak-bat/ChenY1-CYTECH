@@ -18,7 +18,6 @@ typedef struct Animal {
 } Animal;
 
 
-
 typedef enum
 {
     CHIEN = 1,

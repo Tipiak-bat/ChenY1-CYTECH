@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define SIZE 50
+#define SIZE 51
 
 
 typedef struct Animal {
