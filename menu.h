@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define SIZE 50
 
 
 typedef struct Animal {
@@ -24,7 +25,7 @@ typedef enum
     CHIEN = 4
 } Espece;
 
-// Function declarations
+
 int Rechercher_animal();
 Animal ajouter_Animal();
 int Supprimer_animal(Animal animaux[], int nb_animaux);
@@ -32,5 +33,8 @@ int Inventaire_par_espece(Animal animaux[], int nb_animaux);
 int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux);
 int Quitter_le_Menu();
 void affiche_Menu();
+int restauration(Animal *animals, int size);
+int sauvegarde(Animal *animals, int size);
+int menu_sauv_rest(Animal *animaux, int nb_animaux);
 
 #endif
