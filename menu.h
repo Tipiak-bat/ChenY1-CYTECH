@@ -31,7 +31,7 @@ Animal ajouter_Animal();
 int Supprimer_animal(Animal * animaux, int nb_animaux);
 int Inventaire_par_espece(Animal * animaux, int nb_animaux);
 int Nettoyage_hebdomadaire(Animal * animaux, int nb_animaux);
-int Quitter_le_Menu();
+int Quitter_le_Menu(Animal * animaux, int nb_animaux);
 void affiche_Menu();
 int restauration(Animal *animals, int size);
 int sauvegarde(Animal *animals, int size);
