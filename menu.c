@@ -115,17 +115,63 @@ Animal ajouter_Animal() {
 }
 
 
+int Supprimer_animal(Animal animaux[], int nb_animaux) {
+    if (nb_animaux == 0) {
+        printf("Aucun animal à supprimer.\n");
+        return nb_animaux;
+    }
 
+    int id;
+    printf("Entrez l'ID de l'animal à supprimer : ");
+    scanf("%d", &id);
 
-int Supprimer_animal(){
+    int index = -1;
+    for (int i = 0; i < nb_animaux; i++) {
+        if (animaux[i].id == id) {
+            index = i;
+            break;
+        }
+    }
 
+    if (index == -1) { //  index c'est une variable utilisée pour stocker la position de l'animal à supprimer dans le tableau animaux[].
+        printf("Animal non trouvé.\n");
+        return nb_animaux;
+    }
+
+    for (int i = index; i < nb_animaux - 1; i++) {
+        animaux[i] = animaux[i + 1];
+    }
+
+    printf("Animal supprimé avec succès.\n");
+    return nb_animaux - 1;
+}
   return 0;
 }
+
 int Inventaire_par_espece(){
 
   return 0;
 }
-int Nettoyage_hebdomadaire(){
+int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) {
+    int temps_total = 0;
+
+    for (int i = 0; i < nb_animaux; i++) {
+        switch (animaux[i].species) {
+            case 1: temps_total += (5 * 7) + 20; break;  // Chien
+            case 2: temps_total += (10 * 7) + 20; break; // Chat
+            case 3: temps_total += (20 * 7) + 45; break; // Autruche
+            case 4: temps_total += (10 * 7) + 20; break; // Hamster
+        }
+    }
+
+    int cages_vides = 10 - nb_animaux;
+    if (cages_vides > 0) {
+        temps_total += cages_vides * (2 * 7); // 2 minutes/jour/cage vide
+    }
+
+    printf("Temps total de nettoyage hebdomadaire : %d minutes.\n", temps_total);
+    return temps_total;
+}
 
   return 0;
 }
