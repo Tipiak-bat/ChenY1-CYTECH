@@ -8,6 +8,7 @@ int main() {
     // Initialisation des cages vides
     for (int i = 1; i < SIZE; i++) {
         animaux[i].keyid = -i; // Indique une cage vide
+        strcpy(animaux[i].phrase, "");
     }
 
     do {
