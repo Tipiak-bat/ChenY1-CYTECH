@@ -76,6 +76,6 @@ int restauration(Animal *animals, int size) {
           return 1;
      }
 
-     printf("[LOGS] Restauration terminée ! %d animaux chargés.\n", i);
+     printf("[LOGS] Restauration terminée ! %d animaux chargés.\n", i-1);
      return 0;
 }
