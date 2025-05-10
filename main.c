@@ -21,7 +21,7 @@ int main() {
                 Rechercher_animal(); // Fonction de recherche
             break;
             case 2:
-                if (addAnimal(animaux, SIZE) == 0) {
+                if (Ajouter_Animal(animaux, SIZE) == 0) {
                     nb_animaux++;
                     printf("Animal ajouté avec succès.\n");
                 } else {
@@ -52,7 +52,7 @@ int main() {
             default:
                 printf("Erreur : veuillez saisir un numéro entre 1 et 8.\n");
         }
-    } while (choix >= 1 && choix <= 7);
+    } while (choix >= 1 && choix <= 8);
 
     return 0;
 }
