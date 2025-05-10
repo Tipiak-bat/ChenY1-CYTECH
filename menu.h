@@ -4,6 +4,7 @@
 
 
 
+
 //c'est pour aryem quand j'ai fait la fonction ajouter animal je savais pas ou mettre desoler 
  typedef struct {
     int identifiant;
@@ -13,6 +14,15 @@
     float poids;
     char categorie_age[10];
 } Animal;
+
+
+//pour l'inventaire animaux 
+typedef struct {
+    int id;
+    char nom[50];
+    int species;
+} Animal;
+
 
 // pour la fonction nettoyage hebdomadaire 
 typedef struct {
