@@ -35,7 +35,8 @@ int Rechercher_animal() {
         while (getchar() != '\n'); // Nettoyage du buffer
         return 1;
     }
-
+    
+    // recherche_factuel(r_espece, r_name, r_agetype);
     return 0;
 }
 
@@ -101,7 +102,7 @@ int addAnimal(Animal animaux[], int size) {
     return 1;
 }
 
-int Supprimer_animal(Animal animaux[], int nb_animaux) {
+int Supprimer_animal(Animal * animaux, int nb_animaux) {
     if (nb_animaux == 0) {
         printf("Aucun animal à supprimer.\n");
         return nb_animaux;
@@ -114,7 +115,7 @@ int Supprimer_animal(Animal animaux[], int nb_animaux) {
         while (getchar() != '\n'); // Nettoyage du buffer
         return nb_animaux;
     }
-
+   
     int index = -1;
     for (int i = 0; i < nb_animaux; i++) {
         if (animaux[i].keyid == id) {
@@ -136,7 +137,7 @@ int Supprimer_animal(Animal animaux[], int nb_animaux) {
     return nb_animaux - 1;
 }
 
-int Inventaire_par_espece(Animal animaux[], int nb_animaux) {
+int Inventaire_par_espece(Animal * animaux, int nb_animaux) {
     if (nb_animaux == 0) {
         printf("Aucun animal à afficher.\n");
         return 0;
@@ -170,7 +171,7 @@ int Inventaire_par_espece(Animal animaux[], int nb_animaux) {
     return 0;
 }
 
-int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) {
+int Nettoyage_hebdomadaire(Animal * animaux, int nb_animaux) {
     int temps_total = 0;
 
     for (int i = 0; i < nb_animaux; i++) {
@@ -199,7 +200,7 @@ int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) {
     return temps_total;
 }
 
-int menu_sauv_rest(Animal *animaux, int nb_animaux) {
+int menu_sauv_rest(Animal * animaux, int nb_animaux) {
     int choix;
     do {
         printf("\n==== Menu Sauvegarde & Restauration ====\n");
