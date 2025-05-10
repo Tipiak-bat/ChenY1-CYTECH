@@ -40,7 +40,7 @@ int Rechercher_animal() {
     return 0;
 }
 
-int addAnimal(Animal animaux[], int size) {
+int addAnimal(Animal * animaux, int size) {
     Animal animal;
     int valide = 0;
 
