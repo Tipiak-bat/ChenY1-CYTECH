@@ -176,7 +176,7 @@ int Inventaire_par_espece(Animal * animaux, int nb_animaux) {
 int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux) {
     int temps_total = 0;
 
-    for (int i = 1; i < SIZE; i++) {
+    for (int i = 1; i < nb_animaux; i++) {
         if (animaux[i].keyid < 0) { // Cage vide
             temps_total += 2 * 7; // 2 minutes par jour
         } else {
