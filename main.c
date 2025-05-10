@@ -2,12 +2,12 @@
 #include "main.h"
 
 int main() {
-    Animal animaux[50]; // Tableau pour stocker les animaux
+    Animal animaux[SIZE]; // Tableau pour stocker les animaux
     int nb_animaux = 0;  // Nombre d'animaux dans le tableau
     int choix;
 
     // Initialisation des cages vides
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < SIZE; i++) {
         animaux[i].keyid = -i; // Indique une cage vide
     }
 
