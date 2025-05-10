@@ -53,7 +53,7 @@ int restauration(Animal *animals, int size) {
           return 1;
      }
 
-     FILE *fichier = fopen("animaux/animal.txt", "r");
+     FILE *fichier = fopen("animal.txt", "r");
      if (fichier == NULL) {
           printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
@@ -61,7 +61,7 @@ int restauration(Animal *animals, int size) {
 
      printf("[LOGS] Restauration en cours...\n");
      int i = 1;
-     while (i < size && fscanf(fichier, "%d %s %d %d %f %s\n",
+     while (i < size && fscanf(fichier, "%d %s %d %d %f %[^\n]",
                                &animals[i].keyid,
                                animals[i].nom,
                                &animals[i].espece,
@@ -69,7 +69,7 @@ int restauration(Animal *animals, int size) {
                                &animals[i].weight,
                                animals[i].phrase) == 6) {
           i++;
-                               }
+     }
 
      if (fclose(fichier) != 0) {
           printf("[ERROR] Erreur lors de la fermeture du fichier animal.txt\n");
