@@ -19,11 +19,12 @@ typedef struct Animal {
 
 
 
-typedef enum Espece{
-    HAMSTERE = 1,
-    AUTRUCHE = 2,
-    CHAT = 3,
-    CHIEN = 4
+typedef enum
+{
+    CHIEN = 1,
+    CHAT = 2,
+    AUTRUCHE = 3,
+    HAMSTERE = 4
 } Espece;
 
 void affiche_menu();
