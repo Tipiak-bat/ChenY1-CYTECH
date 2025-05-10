@@ -203,7 +203,45 @@ int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) {
     return temps_total;
 }
 
-int Quitter_le_Menu() {
+int menu_sauv_rest(Animal *animaux, int nb_animaux) {
+    int choix;
+    do {
+        printf("\n==== Menu Sauvegarde & Restauration ====\n");
+        printf("1: Sauvegarder les données\n");
+        printf("2: Restaurer les données\n");
+        printf("3: Retour au menu principal\n");
+        printf("Votre choix : ");
+        if (scanf("%d", &choix) != 1) {
+            printf("[ERROR] Saisie invalide.\n");
+            while (getchar() != '\n'); // Nettoyage du buffer
+            continue;
+        }
+
+        switch (choix) {
+            case 1:
+                if (sauvegarde(animaux, nb_animaux) == 0) {
+                    printf("Données sauvegardées avec succès.\n");
+                } else {
+                    printf("Erreur lors de la sauvegarde des données.\n");
+                }
+            break;
+            case 2:
+                if (restauration(animaux, SIZE) == 0) {
+                    printf("Données restaurées avec succès.\n");
+                } else {
+                    printf("Erreur lors de la restauration des données.\n");
+                }
+            break;
+            case 3:
+                printf("Retour au menu principal...\n");
+            return 0;
+            default:
+                printf("[ERROR] Choix invalide. Veuillez entrer un numéro entre 1 et 3.\n");
+        }
+    } while (1);
+}
+
+int Quitter_le_Menu(Animal * animaux, int nb_animaux) {
     char choix;
 
     do {
@@ -215,7 +253,26 @@ int Quitter_le_Menu() {
         }
 
         if (choix == 'O' || choix == 'o') {
-            printf("Au revoir !\n");
+            char sauvegarde_choix;
+            printf("Voulez-vous sauvegarder avant de quitter ? (O/N) : ");
+            if (scanf(" %c", &sauvegarde_choix) != 1) {
+                printf("[ERROR] Saisie invalide.\n");
+                while (getchar() != '\n'); // Nettoyage du buffer
+                continue;
+            }
+
+            if (sauvegarde_choix == 'O' || sauvegarde_choix == 'o') {
+                if (sauvegarde(animaux, nb_animaux) == 0) {
+                    printf("Données sauvegardées avec succès. Au revoir !\n");
+                } else {
+                    printf("Erreur lors de la sauvegarde des données. Au revoir !\n");
+                }
+            } else if (sauvegarde_choix == 'N' || sauvegarde_choix == 'n') {
+                printf("Au revoir !\n");
+            } else {
+                printf("Choix invalide. Retour au menu principal...\n");
+                continue;
+            }
             return 1;
         } else if (choix == 'N' || choix == 'n') {
             printf("Retour au menu principal...\n");
@@ -226,13 +283,15 @@ int Quitter_le_Menu() {
     } while (1);
 }
 
+// Fonction pour afficher le menu principal
 void affiche_menu() {
-    printf("\n====Bienvenue dans Le menu de ChenY1 le Refuge====\n");
+    printf("\n==== Bienvenue dans Le menu de ChenY1 le Refuge ====\n");
     printf("1: Vous Recherchez un animal\n");
     printf("2: Vous voulez ajouter un animal\n");
     printf("3: Vous voulez supprimer un animal\n");
     printf("4: Inventaire par espèce\n");
     printf("5: Faire le nettoyage hebdomadaire\n");
-    printf("6: Quitter le menu\n");
-    printf("7: Crédit\n");
+    printf("6: Sauvegarde & Restauration\n");
+    printf("7: Quitter le menu\n");
+    printf("8: Crédit\n");
 }
