@@ -40,6 +40,7 @@ int main() {
             break;
             case 6:
                 menu_sauv_rest(animaux, SIZE); // Menu de sauvegarde et restauration
+            break;
             case 7:
                 if (Quitter_le_Menu()) {
                     return 0; // Quitte le programme
