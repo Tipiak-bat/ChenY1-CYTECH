@@ -220,6 +220,25 @@ int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux) { // VARIANTE
 }
 
 int Quitter_le_Menu(){
+    char choix;
+
+    // Demander à l'utilisateur s'il veut vraiment quitter
+    do {
+        printf("Voulez-vous vraiment quitter le programme ? (O/N) : ");
+        scanf(" %c", &choix);  // Espace avant %c pour ignorer les caractères de nouvelle ligne
+
+        // Vérifier le choix de l'utilisateur
+        if (choix == 'O' || choix == 'o') {
+            printf("Au revoir !\n");
+            return 1;  // Retourne 1 pour indiquer qu'on souhaite quitter
+        } else if (choix == 'N' || choix == 'n') {
+            printf("Retour au menu principal...\n");
+            return 0;  // Retourne 0 pour indiquer qu'on ne veut pas quitter
+        } else {
+            printf("Choix invalide. Veuillez entrer O pour oui ou N pour non.\n");
+        }
+    } while (1);  // Répéter jusqu'à obtenir une entrée valide
+}
   
   return 0;
 
