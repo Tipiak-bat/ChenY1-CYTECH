@@ -37,4 +37,12 @@ typedef struct {
     char nom[50];
 } Animal; 
 
+// appel des fonction 
+   int Rechercher_animal();
+    Animal ajouter_Animal();
+    int Supprimer_animal(Animal animaux[], int nb_animaux);
+    int Inventaire_par_espece(Animal animaux[], int nb_animaux);
+    int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux);
+    int Quitter_le_Menu();
+ 
 void affiche_Menu();
