@@ -1,7 +1,4 @@
 #include "menu.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 int Rechercher_animal() {
     char r_name[25] = "";
