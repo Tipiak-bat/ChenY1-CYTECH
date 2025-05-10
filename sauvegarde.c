@@ -24,7 +24,7 @@ int sauvegarde(Animal *animals, int size) {
                return 1;
           }
 
-          if (fprintf(fichier, "%d %s %d %d %d %s\n\n",
+          if (fprintf(fichier, "%d %s %d %d %f %s\n\n",
                       animals[i].keyid,
                       animals[i].nom,
                       animals[i].espece,
