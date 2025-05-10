@@ -28,7 +28,7 @@ int emptyCages(Animal * animals, int size) {
         }
     }
 }
-int addAnimal(Animal *animals, int size) {
+/*int addAnimal(Animal *animals, int size) {
     if (animals == NULL || size <= 0) {
         printf("[ERROR] Paramètres invalides : animals est NULL ou size <= 0\n");
         return 1;
@@ -38,10 +38,10 @@ int addAnimal(Animal *animals, int size) {
     while(f_empty < size && animals[f_empty].keyid >= 0) {
         f_empty++;
     }
+    animals[f_empty].keyid = f_empty;
 
-    printf("Entrez les informations de l'animal (keyid, nom, espece, b_year, weight, phrase) :\n");
-    scanf("%d %s %d %d %d %s\n",
-                      animals[f_empty].keyid,
+    printf("Entrez les informations de l'animal (nom, espece, b_year, weight, phrase) :\n");
+    scanf("%s %d %d %d %s\n",
                       animals[f_empty].nom,
                       animals[f_empty].espece,
                       animals[f_empty].b_year,
@@ -49,4 +49,4 @@ int addAnimal(Animal *animals, int size) {
                       animals[f_empty].phrase);
 
     return 0;
-}
+}*/

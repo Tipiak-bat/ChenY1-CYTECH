@@ -1,48 +1,36 @@
-#include<stdio.h>
+
+#ifndef MENU_H
+#define MENU_H
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-
-
-//c'est pour aryem quand j'ai fait la fonction ajouter animal je savais pas ou mettre desoler 
- typedef struct {
-    int identifiant;
-    char nom[50];
+typedef struct Animal {
+    int keyid;
+    char nom[25];
     int espece;
-    int annee_naissance;
-    float poids;
-    char categorie_age[10];
+    int b_year;
+    float weight;
+    char phrase[255];
 } Animal;
 
+typedef enum
+{
+    HAMSTERE = 1,
+    AUTRUCHE = 2,
+    CHAT = 3,
+    CHIEN = 4
+} Espece;
 
-//pour l'inventaire animaux 
-typedef struct {
-    int id;
-    char nom[50];
-    int species;
-} Animal;
-
-
-// pour la fonction nettoyage hebdomadaire 
-typedef struct {
-    int id;
-    char nom[50];
-    int espece;
-} Animal;
-
-// pour la fonction supprimer animal 
-typedef struct {
-    int id;
-    char nom[50];
-} Animal; 
-
-// appel des fonction 
-   int Rechercher_animal();
-    Animal ajouter_Animal();
-    int Supprimer_animal(Animal animaux[], int nb_animaux);
-    int Inventaire_par_espece(Animal animaux[], int nb_animaux);
-    int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux);
-    int Quitter_le_Menu();
- 
+// Function declarations
+int Rechercher_animal();
+Animal ajouter_Animal();
+int Supprimer_animal(Animal animaux[], int nb_animaux);
+int Inventaire_par_espece(Animal animaux[], int nb_animaux);
+int Nettoyage_hebdomadaire(Animal animaux[], int nb_animaux);
+int Quitter_le_Menu();
 void affiche_Menu();
+
+#endif
