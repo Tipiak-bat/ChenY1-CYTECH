@@ -34,6 +34,7 @@ int Inventaire_par_espece(Animal * animaux, int nb_animaux);
 int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux);
 int menu_sauv_rest(Animal * animaux, int nb_animaux);
 int Quitter_le_Menu();
+int Imprimer_animaux(Animal *animaux, int taille);
 
 
 #endif //MAIN_H
