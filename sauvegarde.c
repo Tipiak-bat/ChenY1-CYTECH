@@ -6,14 +6,14 @@ int sauvegarde(Animal *animals, int size) {
           return 1;
      }
 
-     FILE *fichier = fopen("animal.txt", "w");
+     FILE *fichier = fopen("animaux/animal.txt", "w");
      if (fichier == NULL) {
           printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
      }
 
      printf("[LOGS] Sauvegarde en cours... (ne pas éteindre le programme)\n");
-     for (int i = 0; i < size; i++) {
+     for (int i = 1; i < size; i++) {
           if (animals[i].keyid < 0) {
                continue;
           }
@@ -24,7 +24,7 @@ int sauvegarde(Animal *animals, int size) {
                return 1;
           }
 
-          if (fprintf(fichier, "%d %s %d %d %d %s\n\n",
+          if (fprintf(fichier, "%d %s %d %d %f %s\n\n",
                       animals[i].keyid,
                       animals[i].nom,
                       animals[i].espece,
@@ -53,15 +53,15 @@ int restauration(Animal *animals, int size) {
           return 1;
      }
 
-     FILE *fichier = fopen("animal.txt", "r");
+     FILE *fichier = fopen("animaux/animal.txt", "r");
      if (fichier == NULL) {
           printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
      }
 
      printf("[LOGS] Restauration en cours...\n");
-     int i = 0;
-     while (i < size && fscanf(fichier, "%d %s %d %d %d %s\n",
+     int i = 1;
+     while (i < size && fscanf(fichier, "%d %s %d %d %f %[^\n]",
                                &animals[i].keyid,
                                animals[i].nom,
                                &animals[i].espece,
@@ -69,13 +69,13 @@ int restauration(Animal *animals, int size) {
                                &animals[i].weight,
                                animals[i].phrase) == 6) {
           i++;
-                               }
+     }
 
      if (fclose(fichier) != 0) {
           printf("[ERROR] Erreur lors de la fermeture du fichier animal.txt\n");
           return 1;
      }
 
-     printf("[LOGS] Restauration terminée ! %d animaux chargés.\n", i);
+     printf("[LOGS] Restauration terminée ! %d animaux chargés.\n", i-1);
      return 0;
 }
