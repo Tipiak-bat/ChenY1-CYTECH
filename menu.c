@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int Rechercher_animal(Animal animaux[], int nb_animaux) {
+int Rechercher_animal() {
     char r_name[25] = "";
     int r_espece = -1;
     int r_age_type = -1; // -1 = pas de critère, 0 = jeune (<2 ans), 1 = senior (>10 ans)
