@@ -32,8 +32,14 @@ typedef struct
 typedef struct {
     int id;
     char nom[50];
-    int species;
+    int espece;
 } Animal;
+
+// pour la fonction supprimer animal 
+typedef struct {
+    int id;
+    char nom[50];
+} Animal; 
 
 
 typedef enum
