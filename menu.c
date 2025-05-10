@@ -41,17 +41,26 @@ int Rechercher_animal() {
     return 0;
 }
 
-int Ajouter_Animal(Animal * animaux, int size) {
+int Ajouter_Animal(Animal *animaux, int size) {
     Animal animal;
     int valide = 0;
 
-    printf("Veuillez saisir l'identifiant de l'animal :\n");
-    if ((scanf("%d", &animal.keyid) != 1) || animal.keyid < 1 || animal.keyid > 50) {
-        printf("[ERROR] Saisie invalide pour l'identifiant.\n");
-        while (getchar() != '\n'); // Nettoyage du buffer
-        return 1;
+    // Générer automatiquement l'identifiant
+    int id_disponible = -1;
+    for (int i = 1; i < size; i++) {
+        if (animaux[i].keyid < 0) { // Trouver une cage vide
+            id_disponible = i;
+            break;
+        }
     }
 
+    if (id_disponible == -1) {
+        printf("Erreur : aucune cage disponible.\n");
+        return 1;
+    }
+    animal.keyid = id_disponible;
+
+    // Saisir le nom de l'animal
     do {
         valide = 1;
         printf("Veuillez saisir le nom de l'animal (sans espaces) :\n");
@@ -68,6 +77,7 @@ int Ajouter_Animal(Animal * animaux, int size) {
         }
     } while (valide != 1);
 
+    // Saisir l'espèce
     do {
         printf("Veuillez choisir l'espèce de l'animal :\n");
         printf("1 - Chien\n2 - Chat\n3 - Autruche\n4 - Hamster\n");
@@ -77,6 +87,7 @@ int Ajouter_Animal(Animal * animaux, int size) {
         }
     } while (animal.espece < 1 || animal.espece > 4);
 
+    // Saisir le poids
     do {
         printf("Veuillez saisir le poids de l'animal (en kg, positif) :\n");
         if (scanf("%f", &animal.weight) != 1 || animal.weight <= 0) {
@@ -85,23 +96,28 @@ int Ajouter_Animal(Animal * animaux, int size) {
         }
     } while (animal.weight <= 0);
 
+    // Saisir l'année de naissance
     do {
         printf("Veuillez saisir l'année de naissance de l'animal :\n");
         if (scanf("%d", &animal.b_year) != 1 || animal.b_year < 1980 || animal.b_year > 2025) {
             printf("Année invalide. Veuillez réessayer.\n");
             while (getchar() != '\n'); // Nettoyage du buffer
         }
-    } while (animal.b_year < 1900 || animal.b_year > 2025);
+    } while (animal.b_year < 1980 || animal.b_year > 2025);
 
-    for (int i = 1; i < size; i++) {
-        if (animaux[i].keyid < 0) { // Trouver une cage vide
-            animaux[i] = animal;
-            return 0;
+    // Saisir une phrase de description
+    printf("Veuillez saisir une phrase de description pour l'animal :\n");
+    while (getchar() != '\n'); // Nettoyage du buffer
+    if (fgets(animal.phrase, sizeof(animal.phrase), stdin) != NULL) {
+        size_t len = strlen(animal.phrase);
+        if (len > 0 && animal.phrase[len - 1] == '\n') {
+            animal.phrase[len - 1] = '\0';
         }
     }
 
-    printf("Erreur : aucune cage disponible.\n");
-    return 1;
+    // Ajouter l'animal dans la cage disponible
+    animaux[id_disponible] = animal;
+    return 0;
 }
 
 int Supprimer_animal(Animal * animaux, int nb_animaux) {
@@ -176,7 +192,7 @@ int Inventaire_par_espece(Animal * animaux, int nb_animaux) {
 int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux) {
     int temps_total = 0;
 
-    for (int i = 1; i < nb_animaux; i++) {
+    for (int i = 1; i < SIZE; i++) {
         if (animaux[i].keyid < 0) { // Cage vide
             temps_total += 2 * 7; // 2 minutes par jour
         } else {
@@ -205,7 +221,7 @@ int Imprimer_animaux(Animal *animaux, int taille) {
     printf("\n===== Liste des Animaux =====\n");
     for (int i = 1; i < taille; i++) {
         if (animaux[i].keyid < 0) {
-            printf("Cage %d : Vide\n", -animaux[i].keyid);
+            printf("Cage %d : Vide\n", i);
         } else {
             printf("Cage %d :\n", animaux[i].keyid);
             printf("  Nom : %s\n", animaux[i].nom);
