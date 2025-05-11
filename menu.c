@@ -97,9 +97,11 @@ int Menu_Ajouter_Animal(Animal *animaux, int taille) {
     do {
         printf("Veuillez choisir l'espèce de l'animal :\n");
         printf("1 - Chien\n2 - Chat\n3 - Autruche\n4 - Hamster\n");
+        animal.espece = 0;
         if (scanf("%d", &animal.espece) != 1 || animal.espece < 1 || animal.espece > 4) {
             printf("[ERREUR] Espèce invalide. Veuillez réessayer.\n");
             while (getchar() != '\n'); // Nettoyage du buffer
+            animal.espece = 0;
         }
     } while (animal.espece < 1 || animal.espece > 4);
 
