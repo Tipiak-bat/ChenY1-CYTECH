@@ -15,7 +15,7 @@ $(EXEC): $(OBJ)
 
 init:
 	mkdir -p animaux
-	touch animaux/animaux.txt
+	touch animaux/animal.txt
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
