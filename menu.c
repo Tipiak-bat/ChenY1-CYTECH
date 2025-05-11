@@ -234,11 +234,13 @@ int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux) {
 }
 
 int Imprimer_animaux(Animal *animaux, int taille) {
+    int cage_pleine = 0;
     printf("\n===== Liste des Animaux =====\n");
     for (int i = 1; i < taille; i++) {
         if (animaux[i].keyid < 0) {
             // Cage vide
         } else {
+            cage_pleine++;
             printf("Cage %d :\n", animaux[i].keyid);
             printf("  Nom : %s\n", animaux[i].nom);
             printf("  Espèce : ");
@@ -262,6 +264,9 @@ int Imprimer_animaux(Animal *animaux, int taille) {
             printf("  Année de naissance : %d\n", animaux[i].b_year);
             printf("  Phrase de Description : %s\n", animaux[i].phrase);
          }
+    }
+    if (cage_pleine == 0) {
+        printf("Aucun animal dans le refuge.\n");
     }
     printf("=============================\n");
     return 0;
