@@ -24,7 +24,7 @@ int main() {
         scanf("%d", &choix);
 
         if( choix < 1 || choix > 9) {
-            printf("[ERROR] Choix invalide. Veuillez entrer un numéro entre 1 et 10.\n"); // Recommence la boucle si le choix est invalide
+            printf("[ERREUR] Choix invalide. Veuillez entrer un numéro entre 1 et 10.\n"); // Recommence la boucle si le choix est invalide
         } else {
             switch (choix) {
                 case 1:
@@ -93,7 +93,7 @@ char* scan_nom(const char *message, int choix) {
 
         // Lecture de l'entrée utilisateur
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-            printf("[ERROR] Saisie invalide. Veuillez réessayer.\n");
+            printf("[ERREUR] Saisie invalide. Veuillez réessayer.\n");
             valide = 0;
             continue;
         }
@@ -103,7 +103,7 @@ char* scan_nom(const char *message, int choix) {
         if (len > 0 && buffer[len - 1] == '\n') {
             buffer[len - 1] = '\0'; // Retirer le '\n'
         } else {
-            printf("[ERROR] Nom trop long. Veuillez réessayer.\n");
+            printf("[ERREUR] Nom trop long. Veuillez réessayer.\n");
             // Vider le buffer
             int c;
             while ((c = getchar()) != '\n' && c != EOF);
@@ -114,7 +114,7 @@ char* scan_nom(const char *message, int choix) {
         // Vérification si l'utilisateur n'a rien saisi
         if(choix == 1){
             if (strlen(buffer) == 0) {
-                printf("[ERROR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
+                printf("[ERREUR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
                 valide = 0;
                 continue;
             }
@@ -122,7 +122,7 @@ char* scan_nom(const char *message, int choix) {
         // Vérification des espaces
         for (size_t i = 0; i < len; i++) {
             if (buffer[i] == ' ') {
-                printf("[ERROR] Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
+                printf("[ERREUR] Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
                 valide = 0;
                 break;
             }
