@@ -32,8 +32,8 @@ Bienvenue dans **ChenY1**, un projet de gestion d'un refuge pour animaux. Ce pro
 ### Étapes
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/Tipiak-bat/ProjetInfoCYTech2025.git
-   cd ChenY1
+   git clone https://github.com/Tipiak-bat/ChenY1-CYTECH.git
+   cd ChenY1-CYTECH
    ```
 2. Compilez le projet :
    ```bash
