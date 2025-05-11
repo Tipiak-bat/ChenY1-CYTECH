@@ -73,8 +73,6 @@ int restauration(Animal *animals, int taille) {
     char ligne[512]; // Taille suffisante pour une ligne
 
     while (fgets(ligne, sizeof(ligne), fichier)) {
-        // Remplace les espaces consécutifs par un seul espace
-        // (facultatif, mais peut aider pour les cas complexes)
         Animal temp;
         int result = sscanf(ligne, "%d %s %d %d %f %[^\n]",
                             &keyid,
