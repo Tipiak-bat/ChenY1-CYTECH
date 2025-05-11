@@ -6,15 +6,17 @@
    #include <string.h>
    #include <stdlib.h>
    #include <time.h>
-   #define SIZE 51
+   #define TAILLE 51
+   #define MAX_NOM 25
+   #define MAX_PHRASE 255
 
 typedef struct Animal {
     int keyid;
-    char nom[25];
+    char nom[MAX_NOM];
     int espece;
     int b_year;
     float weight;
-    char phrase[255];
+    char phrase[MAX_PHRASE];
 } Animal;
 
 
@@ -27,14 +29,14 @@ typedef enum
 } Espece;
 
 void affiche_menu();
-int Rechercher_animal();
-int Ajouter_Animal(Animal * animaux, int size);
-int Supprimer_animal(Animal * animaux, int nb_animaux);
+int Menu_Rechercher_animal(Animal * animaux, int taille);
+int Menu_Ajouter_Animal(Animal * animaux, int taille);
+int Menu_Supprimer_animal(Animal * animaux, int nb_animaux);
 int Inventaire_par_espece(Animal * animaux, int nb_animaux);
 int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux);
 int menu_sauv_rest(Animal * animaux, int nb_animaux);
 int Quitter_le_Menu(Animal * animaux, int nb_animaux);
 int Imprimer_animaux(Animal *animaux, int taille);
-
+char * scan_nom();
 
 #endif //MAIN_H
