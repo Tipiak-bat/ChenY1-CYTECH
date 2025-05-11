@@ -64,25 +64,23 @@ int keyid;
     }
     if(a<50){
         do{
-        printf("L'ajout d'un animal est possible\n Donnez lui un nom \n Une espece : 1) hamster  2) hautruche  3) chat  4) chien\n Année de naissance\n Poids\n Une phrase qui définit l'animal\n");
+            printf("L'ajout d'un animal est possible\n Donnez lui un nom \n Une espece : 1) hamster  2) hautruche  3) chat  4) chien\n Année de naissance\n Poids\n Une phrase qui définit l'animal\n");
         
-        if (scanf("%s", nom) != 1) {
+            if (scanf("%s", nom) != 1) {
                 printf("Erreur de lecture !\n");
-        }
-        if (scanf("%d",&espece ) != 1) {
+            }
+            if (scanf("%d",&espece ) != 1) {
                 printf("Erreur de lecture !\n");
-        }
-        if (scanf("%d",&b_year ) != 1) {
+            }
+            if (scanf("%d",&b_year ) != 1) {
                 printf("Erreur de lecture !\n");
-        }
-        if (scanf("%d",&weight ) != 1) {
+            }
+            if (scanf("%d",&weight ) != 1) {
                 printf("Erreur de lecture !\n");
-        }
-        if (scanf("%s", phrase) != 1) {
+            }
+            if (scanf("%s", phrase) != 1) {
                 printf("Erreur de lecture !\n");
-        }
-
-        printf("%s, %d, %d, %d, %s\n", nom, espece, b_year, weight, phrase);
+            }
         }while(b_year<0||b_year>YEAR|| espece <-1||espece>4);
 
         for(int i=1; i<SIZE; i++){
