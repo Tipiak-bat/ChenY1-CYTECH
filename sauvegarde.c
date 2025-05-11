@@ -1,7 +1,7 @@
 #include "sauvegarde.h"
 
-int sauvegarde(Animal *animals, int size) {
-     if (animals == NULL || size <= 0) {
+int sauvegarde(Animal *animals, int taille) {
+     if (animals == NULL || taille <= 0) {
           printf("[ERROR] Paramètres invalides : animals est NULL ou size <= 0\n");
           return 1;
      }
@@ -13,7 +13,7 @@ int sauvegarde(Animal *animals, int size) {
      }
 
      printf("[LOGS] Sauvegarde en cours... (ne pas éteindre le programme)\n");
-     for (int i = 1; i < size; i++) {
+     for (int i = 1; i < taille; i++) {
           if (animals[i].keyid < 0) {
                continue;
           }
@@ -47,8 +47,8 @@ int sauvegarde(Animal *animals, int size) {
 }
 
 
-int restauration(Animal *animals, int size) {
-     if (animals == NULL || size <= 0) {
+int restauration(Animal *animals, int taille) {
+     if (animals == NULL || taille <= 0) {
           printf("[ERROR] Paramètres invalides : animals est NULL ou size <= 0\n");
           return 1;
      }
@@ -61,7 +61,7 @@ int restauration(Animal *animals, int size) {
 
      printf("[LOGS] Restauration en cours...\n");
      int i = 1;
-     while (i < size && fscanf(fichier, "%d %s %d %d %f %[^\n]",
+     while (i < taille && fscanf(fichier, "%d %s %d %d %f %[^\n]",
                                &animals[i].keyid,
                                animals[i].nom,
                                &animals[i].espece,
