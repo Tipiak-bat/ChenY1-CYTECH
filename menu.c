@@ -227,7 +227,7 @@ int Imprimer_animaux(Animal *animaux, int taille) {
     printf("\n===== Liste des Animaux =====\n");
     for (int i = 1; i < taille; i++) {
         if (animaux[i].keyid < 0) {
-            printf("Cage %d : Vide\n", i);
+            // on affiche rien pour éviter du spam printf("Cage %d : Vide\n", i);
         } else {
             printf("Cage %d :\n", animaux[i].keyid);
             printf("  Nom : %s\n", animaux[i].nom);
