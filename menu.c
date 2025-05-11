@@ -62,6 +62,10 @@ int Menu_Ajouter_Animal(Animal *animaux, int taille) {
     int valide = 0;
 
     // Générer automatiquement l'identifiant
+    // l'identifiant d'un animal est le numéro de sa cage qui est le numéro de sa case dans le tableau
+    // si la cage est vide, l'identifiant animal est négatif
+    // sinon, il est positif
+    
     int id_disponible = -1;
     for (int i = 0; i < taille; i++) {
         if (animaux[i].keyid < 0) { // Trouver une cage vide
@@ -75,7 +79,8 @@ int Menu_Ajouter_Animal(Animal *animaux, int taille) {
         return 1;
     }
     animal.keyid = id_disponible;
-
+    
+    // Saisie du nom de l'animal
     char *nom;
     do {
         while (getchar() != '\n'); // Nettoyage du buffer d'entrée
@@ -87,39 +92,6 @@ int Menu_Ajouter_Animal(Animal *animaux, int taille) {
 
     strncpy(animal.nom, nom, sizeof(animal.nom) - 1);
     animal.nom[sizeof(animal.nom) - 1] = '\0'; // S'assurer de la terminaison nulle
-
-    // Saisir le nom de l'animal
-    /*do {
-        valide = 1;
-        printf("Veuillez saisir le nom de l'animal (sans espaces) :\n");
-
-
-
-         Lecture de l'entrée utilisateur
-        if (fgets(animal.nom, sizeof(animal.nom), stdin) != NULL) {
-            size_t len = strlen(animal.nom);
-            if (len > 0 && animal.nom[len - 1] == '\n') {
-                animal.nom[len - 1] = '\0'; // Retirer le caractère de nouvelle ligne
-            } else {
-                // Si la ligne est trop longue, vider le buffer
-                int c;
-                while ((c = getchar()) != '\n' && c != EOF);
-            }
-        } else {
-            printf("[ERROR] Saisie invalide pour le nom.\n");
-            valide = 0;
-            continue;
-        }
-
-        // Vérification des espaces dans le nom
-        for (int i = 0; animal.nom[i] != '\0'; i++) {
-            if (animal.nom[i] == ' ') {
-                printf("Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
-                valide = 0;
-                break;
-            }
-        }
-    } while (valide != 1);*/
 
     // Saisir l'espèce
     do {
@@ -384,7 +356,7 @@ void affiche_menu() {
     printf("4: Inventaire par espèce\n");
     printf("5: Faire le nettoyage hebdomadaire\n");
     printf("6: Sauvegarde & Restauration\n");
-    printf("7: Afficher la liste des animaux\n");
+    printf("7: Afficher la liste complète des animaux\n");
     printf("8: Quitter le menu\n");
     printf("9: Crédit\n");
 }
