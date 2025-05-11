@@ -37,6 +37,6 @@ int Nettoyage_hebdomadaire(Animal *animaux, int nb_animaux);
 int menu_sauv_rest(Animal * animaux, int nb_animaux);
 int Quitter_le_Menu(Animal * animaux, int nb_animaux);
 int Imprimer_animaux(Animal *animaux, int taille);
-char * scan_nom(const char *message);
+char* scan_nom(const char *message, int choix);
 
 #endif //MAIN_H
