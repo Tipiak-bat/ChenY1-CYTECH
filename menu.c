@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-int Rechercher_animal() {
+int Menu_Rechercher_animal(Animal * animaux, int taille) {
     // on met des valeurs par défaut
     char r_name[25] = "";
     int r_espece = -1;
@@ -24,7 +24,7 @@ int Rechercher_animal() {
     }
 
     // Critère : Espèce
-    printf("Liste des IDs :\nIGNORER L'ESPECE = -1\n HAMSTERE = 1\n AUTRUCHE = 2\n CHAT = 3\n CHIEN = 4\n");
+    printf("Liste des IDs :\nIGNORER L'ESPECE = -1\n CHIEN = 1\n CHAT = 2\n AUTRUCHE = 3\n HAMSTERE = 4\n");
     printf("Saisir l'ID de l'espèce :\n");
     if (scanf("%d", &r_espece) != 1 || r_espece > 4 || r_espece < -1) {
         printf("[ERROR] Saisie invalide, retour au menu\n");
@@ -40,18 +40,30 @@ int Rechercher_animal() {
         while (getchar() != '\n'); // Nettoyage du buffer
         return 1;
     }
-    
-    // recherche_factuel(r_espece, r_name, r_agetype);
-    return 0;
+
+    /*if(r_name == "" && r_espece == -1 && r_age_type == -1){
+        Imprimer_animaux(animaux, taille);
+        return 0;
+    } else {*/
+        // Appel de la fonction de recherche
+        int *resultats = Rechercher_animal(animaux, taille, r_name, r_espece, r_age_type);
+        if (resultats == NULL) {
+           printf("Aucun animal trouvé.\n");
+           return 1;
+        } else {
+            free(resultats);
+        }
+    // }
+    return 1;
 }
 
-int Ajouter_Animal(Animal *animaux, int size) {
+int Menu_Ajouter_Animal(Animal *animaux, int taille) {
     Animal animal;
     int valide = 0;
 
     // Générer automatiquement l'identifiant
     int id_disponible = -1;
-    for (int i = 1; i < size; i++) {
+    for (int i = 1; i < taille; i++) {
         if (animaux[i].keyid < 0) { // Trouver une cage vide
             id_disponible = i;
             break;
@@ -64,14 +76,42 @@ int Ajouter_Animal(Animal *animaux, int size) {
     }
     animal.keyid = id_disponible;
 
-    // Saisir le nom de l'animal
+    char *nom;
     do {
+        while (getchar() != '\n'); // Nettoyage du buffer d'entrée
+        nom = scan_nom("Veuillez saisir le nom de l'animal (sans espaces) :");
+        if (nom == NULL) {
+            printf("[ERROR] Aucun nom saisi. Veuillez réessayer.\n");
+        }
+    } while (nom == NULL);
+
+    strncpy(animal.nom, nom, sizeof(animal.nom) - 1);
+    animal.nom[sizeof(animal.nom) - 1] = '\0'; // S'assurer de la terminaison nulle
+
+    // Saisir le nom de l'animal
+    /*do {
         valide = 1;
         printf("Veuillez saisir le nom de l'animal (sans espaces) :\n");
-        if (scanf("%s", animal.nom) != 1) {
+
+
+
+         Lecture de l'entrée utilisateur
+        if (fgets(animal.nom, sizeof(animal.nom), stdin) != NULL) {
+            size_t len = strlen(animal.nom);
+            if (len > 0 && animal.nom[len - 1] == '\n') {
+                animal.nom[len - 1] = '\0'; // Retirer le caractère de nouvelle ligne
+            } else {
+                // Si la ligne est trop longue, vider le buffer
+                int c;
+                while ((c = getchar()) != '\n' && c != EOF);
+            }
+        } else {
             printf("[ERROR] Saisie invalide pour le nom.\n");
-            return 1;
+            valide = 0;
+            continue;
         }
+
+        // Vérification des espaces dans le nom
         for (int i = 0; animal.nom[i] != '\0'; i++) {
             if (animal.nom[i] == ' ') {
                 printf("Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
@@ -79,7 +119,7 @@ int Ajouter_Animal(Animal *animaux, int size) {
                 break;
             }
         }
-    } while (valide != 1);
+    } while (valide != 1);*/
 
     // Saisir l'espèce
     do {
@@ -124,7 +164,7 @@ int Ajouter_Animal(Animal *animaux, int size) {
     return 0;
 }
 
-int Supprimer_animal(Animal * animaux, int nb_animaux) {
+int Menu_Supprimer_animal(Animal * animaux, int nb_animaux) {
     if (nb_animaux == 0) {
         printf("Aucun animal à adopter.\n");
         return nb_animaux;
@@ -191,6 +231,7 @@ int Inventaire_par_espece(Animal * animaux, int nb_animaux) {
     printf("Chats : %d\n", chats);
     printf("Autruches : %d\n", autruches);
     printf("Hamsters : %d\n", hamsters);
+    printf("Il y a en tout : %d animaux dans le refuge.\n", chiens + chats + autruches + hamsters);
 
     return 0;
 }
@@ -229,6 +270,7 @@ int Imprimer_animaux(Animal *animaux, int taille) {
         if (animaux[i].keyid < 0) {
             // on affiche rien pour éviter du spam printf("Cage %d : Vide\n", i);
         } else {
+            printf("Etapes : %d\n", i);
             printf("Cage %d :\n", animaux[i].keyid);
             printf("  Nom : %s\n", animaux[i].nom);
             printf("  Espèce : ");
@@ -280,7 +322,7 @@ int menu_sauv_rest(Animal * animaux, int nb_animaux) {
                 }
             break;
             case 2:
-                if (restauration(animaux, SIZE) == 0) {
+                if (restauration(animaux, TAILLE) == 0) {
                     printf("Données restaurées avec succès.\n");
                 } else {
                     printf("Erreur lors de la restauration des données.\n");
