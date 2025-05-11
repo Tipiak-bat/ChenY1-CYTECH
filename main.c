@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 
-char* scan_nom(); // Prototype de la fonction pour scanner les noms
+char* scan_nom(const char *message); // Prototype de la fonction pour scanner les noms
 
 int main() {
     Animal animaux[TAILLE]; // Tableau pour stocker les animaux
