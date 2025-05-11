@@ -2,13 +2,13 @@
 
 int sauvegarde(Animal *animals, int taille) {
      if (animals == NULL || taille <= 0) {
-          printf("[ERROR] Paramètres invalides : animals est NULL ou size <= 0\n");
+          printf("[ERREUR] Paramètres invalides : animals est NULL ou size <= 0\n");
           return 1;
      }
 
      FILE *fichier = fopen("animaux/animal.txt", "w");
      if (fichier == NULL) {
-          printf("[ERROR] Impossible d'ouvrir le fichier animal.txt\n");
+          printf("[ERREUR] Impossible d'ouvrir le fichier animal.txt\n");
           return 1;
      }
 
@@ -19,7 +19,7 @@ int sauvegarde(Animal *animals, int taille) {
           }
 
           if (animals[i].nom == NULL || animals[i].phrase == NULL) {
-               printf("[ERROR] Données invalides pour l'animal à l'index %d\n", i);
+               printf("[ERREUR] Données invalides pour l'animal à l'index %d\n", i);
                fclose(fichier);
                return 1;
           }
@@ -38,7 +38,7 @@ int sauvegarde(Animal *animals, int taille) {
      }
 
      if (fclose(fichier) != 0) {
-          printf("[ERROR] Erreur lors de la fermeture du fichier animal.txt\n");
+          printf("[ERREUR] Erreur lors de la fermeture du fichier animal.txt\n");
           return 1;
      }
 
@@ -49,13 +49,13 @@ int sauvegarde(Animal *animals, int taille) {
 
 int restauration(Animal *animals, int taille) {
     if (animals == NULL || taille <= 0) {
-        printf("[ERROR] Paramètres invalides\n");
+        printf("[ERREUR] Paramètres invalides\n");
         return 1;
     }
 
     FILE *fichier = fopen("animaux/animal.txt", "r");
     if (fichier == NULL) {
-        printf("[ERROR] Fichier introuvable\n");
+        printf("[ERREUR] Fichier introuvable\n");
         return 1;
     }
 
@@ -89,10 +89,10 @@ int restauration(Animal *animals, int taille) {
                 temp.keyid = keyid;
                 animals[keyid] = temp; // Copie les données
             } else {
-                printf("[WARNING] keyid %d hors limites\n", keyid);
+                printf("[ATTENTION] keyid %d hors limites, ignorée\n", keyid);
             }
         } else {
-            printf("[WARNING] Ligne malformée: %s", ligne);
+            printf("[ATTENTION]  Ligne malformée: %s", ligne);
         }
     }
 
