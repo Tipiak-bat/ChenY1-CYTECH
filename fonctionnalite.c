@@ -19,7 +19,7 @@ int* Rechercher_animal(Animal* tab, int nb_elements, char* nom, int espece, int 
         if (options == NULL) {
             options = malloc(SIZE * sizeof(int));
             if (options == NULL) {
-                printf("Erreur d'allocation mémoire.\n");
+                printf("[ERREUR] Erreur d'allocation mémoire.\n");
                 exit(1);
             }
         }
@@ -50,68 +50,3 @@ int* Rechercher_animal(Animal* tab, int nb_elements, char* nom, int espece, int 
 
     return options;
 }
-
-/*int ajout_animal(Animal* tab, char* nom, int espece, int b_year, int weight, char* phrase) {
-    int a = 0;
-
-    for (int i = 1; i < SIZE; i++) {
-        if (tab[i].keyid > 0) {
-            a++;
-        }
-    }
-
-    if (a < 50) {
-        if (b_year < 0 || b_year > YEAR || espece < -1 || espece > 4) {
-            return 1; // Erreur dans les données fournies
-        }
-
-        for (int i = 1; i < SIZE; i++) {
-            if (tab[i].keyid < 0) {
-                tab[i].keyid = i;
-                strncpy(tab[i].nom, nom, sizeof(tab[i].nom) - 1);
-                tab[i].nom[sizeof(tab[i].nom) - 1] = '\0';
-                tab[i].espece = espece;
-                tab[i].b_year = b_year;
-                tab[i].weight = weight;
-                strncpy(tab[i].phrase, phrase, sizeof(tab[i].phrase) - 1);
-                tab[i].phrase[sizeof(tab[i].phrase) - 1] = '\0';
-                break;
-            }
-        }
-    } else {
-        return 1; // Impossible d'ajouter un animal (tableau plein)
-    }
-
-    return 0; // Succès
-}
-
-int delete_an_animal(Animal* tab, int id){
-    int test=1;
-    if(id<1||id>SIZE){
-        printf("Erreur dans le choix de l'identifiant.\n");
-        exit(3);
-    }
-    else{
-        for(int i=1; i<SIZE; i++){
-            if(id==tab[i].keyid){
-                printf("Animal %d\n",tab[i].keyid);
-                tab[i].keyid=i*(-1);
-                tab[i].nom[0]='\0';
-                tab[i].espece=0;
-                tab[i].b_year=0;
-                tab[i].weight=0;
-                tab[i].phrase[0] ='\0';
-                i=SIZE;
-                test=0;
-            }
-        }
-        if(test){
-            printf("Animal non trouvé.\n");
-        }
-        else{
-            printf("Animal supprimé avec succès.\n");
-        }
-
-    }
-    return 0;
-}*/
