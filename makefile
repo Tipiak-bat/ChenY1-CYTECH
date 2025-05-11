@@ -5,11 +5,17 @@ SRC = main.c menu.c sauvegarde.c fonctionnalite.c
 OBJ = $(SRC:.c=.o)
 EXEC = chenY1
 
-# Règles
-all: $(EXEC)
+
+exec: $(EXEC)
+
+all: clean mrproper init exec
 
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
+
+init:
+	mkdir -p animaux
+	touch animaux/animaux.txt
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -20,4 +26,4 @@ clean:
 mrproper: clean
 	rm -f $(EXEC)
 
-.PHONY: all clean mrproper
+.PHONY: exec all clean mrproper init
