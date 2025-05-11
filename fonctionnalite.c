@@ -1,113 +1,91 @@
 #include"fonctionnalite.h"
 
-int* find_an_animal(Animal* tab, int* nb_elements,char* nom, int espece, int type){
-    int* options = malloc(SIZE * sizeof(int));
-    if (options == NULL) {
-        printf("Erreur d'allocation mémoire.\n");
-        exit(1);
-    }
-    
-    int j=0;
-     int compteur=1;
-     int a=0;
-     int b=0;
-    while(compteur<SIZE){
-        if(strlen(nom)==strlen(tab[compteur].nom)){
-            for(int i=0; i<strlen(nom); i++){
-                if(nom[i]==tab[compteur].nom[i]){
-                    a++;
-                }
+int* Rechercher_animal(Animal* tab, int nb_elements, char* nom, int espece, int type) {
+    int* options = NULL;
+    int j = 0; // Compteur pour les résultats
+
+    printf("\n===== Résultats de la recherche =====\n");
+
+    for (int i = 1; i < nb_elements; i++) {
+        if (tab[i].keyid < 0) continue; // Cage vide
+        int age = YEAR - tab[i].b_year;
+
+        // Vérification des critères
+        if (strlen(nom) > 0 && strcmp(tab[i].nom, nom) != 0) continue;
+        if (espece != -1 && tab[i].espece != espece) continue;
+        if (type != -1 && ((type == 0 && age >= 2) || (type == 1 && age <= 10))) continue;
+
+        // Si un animal correspond, on l'ajoute aux résultats
+        if (options == NULL) {
+            options = malloc(SIZE * sizeof(int));
+            if (options == NULL) {
+                printf("Erreur d'allocation mémoire.\n");
+                exit(1);
             }
-            if(a==strlen(nom)){
-                b++;
-            }
         }
-        else if(nom[0]=='\n'){
-            b++;
+
+        options[j++] = i;
+
+        // Affichage des informations de l'animal
+        printf("\nAnimal trouvé :\n");
+        printf("  ID : %d\n", tab[i].keyid);
+        printf("  Nom : %s\n", tab[i].nom);
+        printf("  Espèce : ");
+        switch (tab[i].espece) {
+            case CHIEN: printf("Chien\n"); break;
+            case CHAT: printf("Chat\n"); break;
+            case AUTRUCHE: printf("Autruche\n"); break;
+            case HAMSTERE: printf("Hamster\n"); break;
+            default: printf("Inconnue\n");
         }
-        if((type==0 && (YEAR-tab[compteur].b_year)<2)||type==-1){
-            b++;
-        }
-        else if(type==1 && (YEAR-tab[compteur].b_year)>10){
-            b++;
-        }
-        if((espece==tab[compteur].espece)||espece==-1){
-            b++;
-        }
-        if(b==3){
-            printf("L'animal %d correspond à votre demande.\n", compteur);
-            options[j]=compteur;
-            printf("ID : %d\n Nom : %s\n Espece : %d\n Année de naissance : %d\n Poids : %d\n Une phrase qui définit l'animal : %s\n",tab[compteur].keyid,tab[compteur].nom, tab[compteur].espece, tab[compteur].b_year, tab[compteur].weight, tab[compteur].phrase);
-            j++;
-        }
-        compteur++;
-        b=0;
-        a=0;
+        printf("  Année de naissance : %d\n", tab[i].b_year);
+        printf("  Poids : %.2f kg\n", tab[i].weight);
+        printf("  Description : %s\n", tab[i].phrase);
+        printf("-----------------------------");
     }
 
-    *nb_elements=j;
+    if (j == 0) {
+        printf("\nAucun animal ne correspond aux critères.\n");
+    }
+
     return options;
 }
 
-void ajout_animal(Animal* tab){
-int keyid;
- char nom[25];
- int espece;
- int b_year;
- int weight;
- char phrase[255];
-    int a=0;
-    for(int i=1; i<SIZE; i++){
-        if(tab[i].keyid>0){
+/*int ajout_animal(Animal* tab, char* nom, int espece, int b_year, int weight, char* phrase) {
+    int a = 0;
+
+    for (int i = 1; i < SIZE; i++) {
+        if (tab[i].keyid > 0) {
             a++;
         }
     }
-    if(a<50){
-        do{
-            printf("L'ajout d'un animal est possible\n Donnez lui un nom \n Une espece : 1) hamster  2) hautruche  3) chat  4) chien\n Année de naissance\n Poids\n Une phrase qui définit l'animal\n");
-        
-            if (scanf("%s", nom) != 1) {
-                printf("Erreur de lecture !\n");
-            }
-            if (scanf("%d",&espece ) != 1) {
-                printf("Erreur de lecture !\n");
-            }
-            if (scanf("%d",&b_year ) != 1) {
-                printf("Erreur de lecture !\n");
-            }
-            if (scanf("%d",&weight ) != 1) {
-                printf("Erreur de lecture !\n");
-            }
-            if (scanf("%s", phrase) != 1) {
-                printf("Erreur de lecture !\n");
-            }
-        }while(b_year<0||b_year>YEAR|| espece <-1||espece>4);
 
-        for(int i=1; i<SIZE; i++){
-        if(tab[i].keyid<0){
-            tab[i].keyid= i;
-            for(int h=0;h<=strlen(nom);h++){
-            tab[i].nom[h] = nom[h];
-            }
-            tab[i].espece=espece;
-            tab[i].b_year=b_year;
-            tab[i].weight=weight;
-            for(int j=0;j<=strlen(phrase);j++){
-            tab[i].phrase[j] = phrase[j];
-            }
-            i=SIZE;
+    if (a < 50) {
+        if (b_year < 0 || b_year > YEAR || espece < -1 || espece > 4) {
+            return 1; // Erreur dans les données fournies
         }
-    }
-    printf("Animal ajouté avec succès.\n");
-    }
-    else{
-        printf("Impossible d'ajouter un animal.\n");
-        exit(2);
+
+        for (int i = 1; i < SIZE; i++) {
+            if (tab[i].keyid < 0) {
+                tab[i].keyid = i;
+                strncpy(tab[i].nom, nom, sizeof(tab[i].nom) - 1);
+                tab[i].nom[sizeof(tab[i].nom) - 1] = '\0';
+                tab[i].espece = espece;
+                tab[i].b_year = b_year;
+                tab[i].weight = weight;
+                strncpy(tab[i].phrase, phrase, sizeof(tab[i].phrase) - 1);
+                tab[i].phrase[sizeof(tab[i].phrase) - 1] = '\0';
+                break;
+            }
+        }
+    } else {
+        return 1; // Impossible d'ajouter un animal (tableau plein)
     }
 
+    return 0; // Succès
 }
 
-void delete_an_animal(Animal* tab, int id){
+int delete_an_animal(Animal* tab, int id){
     int test=1;
     if(id<1||id>SIZE){
         printf("Erreur dans le choix de l'identifiant.\n");
@@ -135,4 +113,5 @@ void delete_an_animal(Animal* tab, int id){
         }
 
     }
-}
+    return 0;
+}*/
