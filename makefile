@@ -5,7 +5,7 @@ SRC = main.c menu.c sauvegarde.c fonctionnalite.c
 OBJ = $(SRC:.c=.o)
 EXEC = chenY1
 
-all: $(EXEC) setup_animaux
+all: $(EXEC)
 
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
