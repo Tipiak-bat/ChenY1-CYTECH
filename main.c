@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "main.h"
 
-char* scan_nom(const char *message); // Prototype de la fonction pour scanner les noms
+char* scan_nom(const char *message, int choix); // Prototype de la fonction pour scanner les noms
+void printtab(Animal *animaux, int taille);
 
 int main() {
     Animal animaux[TAILLE]; // Tableau pour stocker les animaux
@@ -56,15 +57,28 @@ int main() {
             case 9:
                 printf("Crédits : Projet réalisé par l'équipe CYTech 2025.\n");
             break;
+            case 10:
+                printtab(animaux, TAILLE);
+            break;
             default:
                 printf("Erreur : veuillez saisir un numéro entre 1 et 9.\n");
         }
-    } while (choix >= 1 && choix <= 9);
+    } while (choix >= 1 && choix <= 10);
 
     return 0;
 }
 
-char* scan_nom(const char *message) {
+void printtab(Animal *animaux, int taille) {
+    printf("=== Liste tableau ===\n");
+    for (int i = 0; i < taille; i++) {
+            printf("i : %d,\n ID: %d,\n Nom: %s,\n Espèce: %d,\n Année de naissance: %d,\n Poids: %.2f kg\n\n",
+                   i, animaux[i].keyid, animaux[i].nom, animaux[i].espece,
+                   animaux[i].b_year, animaux[i].weight);
+        }
+    }
+
+
+char* scan_nom(const char *message, int choix) {
     static char nom[MAX_NOM + 1]; // Tableau statique pour stocker le nom
     char buffer[MAX_NOM + 2];    // +2 pour gérer le '\n' et le '\0'
     int valide;
@@ -94,12 +108,13 @@ char* scan_nom(const char *message) {
         }
 
         // Vérification si l'utilisateur n'a rien saisi
-        if (strlen(buffer) == 0) {
-            printf("[ERROR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
-            valide = 0;
-            continue;
+        if(choix == 1){
+            if (strlen(buffer) == 0) {
+                printf("[ERROR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
+                valide = 0;
+                continue;
+            }
         }
-
         // Vérification des espaces
         for (size_t i = 0; i < len; i++) {
             if (buffer[i] == ' ') {
@@ -114,6 +129,7 @@ char* scan_nom(const char *message) {
     // Copier le nom validé dans le tableau statique
     strncpy(nom, buffer, MAX_NOM);
     nom[MAX_NOM] = '\0'; // S'assurer que la chaîne est terminée
+
 
     return nom;
 }
