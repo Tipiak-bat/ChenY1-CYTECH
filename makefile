@@ -26,5 +26,4 @@ clean:
 mrproper: clean
 	rm -f $(EXEC)
 
-
 .PHONY: exec all clean mrproper init
