@@ -1,1 +1,14 @@
+1 Adam 2 2003 80.000000 Un garcon tout à fait kawainee
+
+2 Amina 4 2023 90.300003 une femme kawainee
+
+3 Kais 2 2003 80.000000 Kais le simple
+
+4 Kaiscooler 2 2003 80.000000 Oklm
+
+5 Aryemm 1 2003 60.470001 Gentille mais simplet
+
+6 Charles 3 2002 120.000000 Une autruche classique mais avec du flow
+
+7 Itadakimasu 1 1987 20.000000 Un shiba-inu tout stylée
 
