@@ -23,47 +23,51 @@ int main() {
         printf("Quel est votre choix ?\n");
         scanf("%d", &choix);
 
-        switch (choix) {
-            case 1:
-                Menu_Rechercher_animal(animaux, TAILLE); // Fonction de recherche
-            break;
-            case 2:
-                if (Menu_Ajouter_Animal(animaux, TAILLE) == 0) {
-                    printf("Animal ajouté avec succès.\n");
-                } else {
-                    printf("Erreur lors de l'ajout de l'animal.\n");
-                }
-            break;
-            case 3:
-               Menu_Supprimer_animal(animaux, TAILLE);
-            break;
-            case 4:
-                Inventaire_par_espece(animaux, TAILLE);
-            break;
-            case 5:
-                Nettoyage_hebdomadaire(animaux, TAILLE);
-            break;
-            case 6:
-                menu_sauv_rest(animaux, TAILLE); // Menu de sauvegarde et restauration
-            break;
-            case 7:
-                Imprimer_animaux(animaux, TAILLE);
-            break;
-            case 8:
-                if (Quitter_le_Menu(animaux, TAILLE)) {
-                    return 0; // Quitte le programme
-                }
-            break;
-            case 9:
-                printf("Crédits : Projet réalisé par l'équipe CYTech 2025.\n");
-            break;
-            case 10:
-                printtab(animaux, TAILLE);
-            break;
-            default:
-                printf("Erreur : veuillez saisir un numéro entre 1 et 9.\n");
+        if( choix < 1 || choix > 9) {
+            printf("[ERREUR] Choix invalide. Veuillez entrer un numéro entre 1 et 10.\n"); // Recommence la boucle si le choix est invalide
+        } else {
+            switch (choix) {
+                case 1:
+                    Menu_Rechercher_animal(animaux, TAILLE); // Fonction de recherche
+                break;
+                case 2:
+                    if (Menu_Ajouter_Animal(animaux, TAILLE) == 0) {
+                        printf("Animal ajouté avec succès.\n");
+                    } else {
+                        printf("Erreur lors de l'ajout de l'animal.\n");
+                    }
+                break;
+                case 3:
+                    Menu_Supprimer_animal(animaux, TAILLE);
+                break;
+                case 4:
+                    Inventaire_par_espece(animaux, TAILLE);
+                break;
+                case 5:
+                    Nettoyage_hebdomadaire(animaux, TAILLE);
+                break;
+                case 6:
+                    menu_sauv_rest(animaux, TAILLE); // Menu de sauvegarde et restauration
+                break;
+                case 7:
+                    Imprimer_animaux(animaux, TAILLE);
+                break;
+                case 8:
+                    if (Quitter_le_Menu(animaux, TAILLE)) {
+                        return 0; // Quitte le programme
+                    }
+                break;
+                case 9:
+                    printf("Crédits : Projet réalisé par l'équipe MI6-N 2025.\n");
+                break;
+                case 10:
+                    printtab(animaux, TAILLE);
+                break;
+                default:
+                    printf("Erreur : veuillez saisir un numéro entre 1 et 9.\n");
+            }
         }
-    } while (choix >= 1 && choix <= 10);
+    } while (1);//choix >= 1 && choix <= 9);
 
     return 0;
 }
@@ -89,7 +93,7 @@ char* scan_nom(const char *message, int choix) {
 
         // Lecture de l'entrée utilisateur
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-            printf("[ERROR] Saisie invalide. Veuillez réessayer.\n");
+            printf("[ERREUR] Saisie invalide. Veuillez réessayer.\n");
             valide = 0;
             continue;
         }
@@ -99,7 +103,7 @@ char* scan_nom(const char *message, int choix) {
         if (len > 0 && buffer[len - 1] == '\n') {
             buffer[len - 1] = '\0'; // Retirer le '\n'
         } else {
-            printf("[ERROR] Nom trop long. Veuillez réessayer.\n");
+            printf("[ERREUR] Nom trop long. Veuillez réessayer.\n");
             // Vider le buffer
             int c;
             while ((c = getchar()) != '\n' && c != EOF);
@@ -110,7 +114,7 @@ char* scan_nom(const char *message, int choix) {
         // Vérification si l'utilisateur n'a rien saisi
         if(choix == 1){
             if (strlen(buffer) == 0) {
-                printf("[ERROR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
+                printf("[ERREUR] Le nom ne peut pas être vide. Veuillez réessayer.\n");
                 valide = 0;
                 continue;
             }
@@ -118,7 +122,7 @@ char* scan_nom(const char *message, int choix) {
         // Vérification des espaces
         for (size_t i = 0; i < len; i++) {
             if (buffer[i] == ' ') {
-                printf("[ERROR] Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
+                printf("[ERREUR] Le nom ne doit pas contenir d'espaces. Veuillez réessayer.\n");
                 valide = 0;
                 break;
             }
