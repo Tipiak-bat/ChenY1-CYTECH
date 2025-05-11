@@ -37,7 +37,7 @@ void affiche_Menu();
 int restauration(Animal *animals, int taille);
 int sauvegarde(Animal *animals, int taille);
 int menu_sauv_rest(Animal *animaux, int nb_animaux);
-char* scan_nom(const char *message);
+char* scan_nom(const char *message, int choix);
 int* Rechercher_animal(Animal* tab, int nb_elements,char* nom, int espece, int type);
 
 #endif
