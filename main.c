@@ -67,7 +67,7 @@ int main() {
                     printf("Erreur : veuillez saisir un numéro entre 1 et 9.\n");
             }
         }
-    } while (1);//choix >= 1 && choix <= 9);
+    } while (choix >= 1 && choix <= 9);
 
     return 0;
 }
