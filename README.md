@@ -14,7 +14,11 @@ Bienvenue dans **ChenY1**, un projet de gestion d'un refuge pour animaux. Ce pro
 
 ## Structure du Projet
 
-- **`menu.c`** : Contient les fonctions principales pour gérer le menu et les interactions utilisateur.
+- **`main.c`** : Point d'entrée du programme, initialise les données et lance le menu principal.
+- **`main.h`** : Déclare les structures et fonctions utilisées dans `main.c`.
+- **`fonctionnalite.c`** : Implémente les fonctions utilitaires et les fonctionnalités spécifiques liées à la gestion des animaux.
+- **`fonctionnalite.h`** : Déclare les structures et fonctions utilisées dans `fonctionnalite.c`.
+- **`menu.c`** : Contient les fonctions principales pour gérer le menu et les interactions utilisateur (principalement les saisies).
 - **`menu.h`** : Déclare les structures et fonctions utilisées dans `menu.c`.
 - **`sauvegarde.c`** : Implémente les fonctions de sauvegarde et de restauration des données.
 - **`sauvegarde.h`** : Déclare les structures et fonctions liées à la sauvegarde.

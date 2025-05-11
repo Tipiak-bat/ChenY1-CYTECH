@@ -1,7 +1,7 @@
 # Variables
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
-SRC = main.c menu.c sauvegarde.c
+SRC = main.c menu.c sauvegarde.c fonctionnalite.c
 OBJ = $(SRC:.c=.o)
 EXEC = chenY1
 
