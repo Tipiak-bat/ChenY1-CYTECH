@@ -92,7 +92,7 @@ int restauration(Animal *animals, int taille) {
                 printf("[WARNING] keyid %d hors limites\n", keyid);
             }
         } else {
-            printf("[WARNING] Ligne malformée: %s", ligne);
+            // rien ! printf("[WARNING] Ligne malformée: %s", ligne);
         }
     }
 
